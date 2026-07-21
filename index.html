@@ -171,6 +171,7 @@
 
   /* COLLABORATION CONCEPTS */
   .concepts-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .concept-media{width:calc(100% + 52px); margin:-30px -26px 20px; aspect-ratio:16/10; background-size:cover; background-position:center; background-color:var(--paper);}
   @media(max-width:820px){ .concepts-grid{grid-template-columns:1fr; max-width:480px; margin:0 auto;} }
   .concept-card{border:1px solid var(--line); background:var(--paper-2); padding:30px 26px; transition:border-color .3s,transform .3s;}
   .concept-card:hover{border-color:var(--gold); transform:translateY(-3px);}
@@ -457,11 +458,11 @@
 <section id="concepts">
   <div class="wrap">
     <div class="section-head center">
-      <div class="sec-lbl"><span class="lbl">Collaboration Concepts</span></div>
-      <h2>How I'd approach a first project</h2>
-      <p>Concepts, not completed campaigns, a few directions I'd bring to a new partnership.</p>
+      <div class="sec-lbl"><span class="lbl" id="concepts-label">Collaboration Concepts</span></div>
+      <h2 id="concepts-heading">How I'd approach a first project</h2>
+      <p id="concepts-sub">Concepts, not completed campaigns, a few directions I'd bring to a new partnership.</p>
     </div>
-    <div class="concepts-grid">
+    <div class="concepts-grid" id="concepts-grid">
       <div class="concept-card">
         <div class="k">01</div>
         <h4>The Getting-Ready Story</h4>
@@ -537,6 +538,26 @@
 </footer>
 
 <script>
+// ===================================================================
+// BRAND CONCEPTS LIBRARY
+// When a tailored link (?brand=Name) matches an entry below, the
+// "Collaboration Concepts" section swaps to that brand's specific
+// pitch. Keys must be lowercase. Each concept: title, text, and an
+// optional img path (a storyboard frame in media/concepts/).
+// No match = the generic three concepts stay. Example entry:
+//
+//   "chloe": {
+//     intro: "Three directions I would bring to a Chloe partnership.",
+//     concepts: [
+//       { title: "Idea Name", text: "One-paragraph pitch.", img: "media/concepts/chloe-idea1.jpg" },
+//       { title: "Second Idea", text: "Another direction." },
+//       { title: "Third Idea", text: "And one more." }
+//     ]
+//   }
+// ===================================================================
+var BRAND_CONCEPTS = {
+};
+
 (function(){
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -559,7 +580,31 @@
     document.getElementById('hero-heading').innerHTML = 'Hi ' + (contact ? contact.split(' ')[0] + ',' : '') + ' here\'s a plan built for <em>' + brand + '</em>.';
     document.getElementById('hero-lede').textContent = 'Below is my media kit, plus a proposal scoped specifically for ' + brand + '. Jump straight to it, or scroll through the numbers first.';
     document.getElementById('hero-plan-btn').style.display = 'inline-block';
-    document.getElementById('nav-plan-link').style.display = 'inline';
+    var navPlan = document.getElementById('nav-plan-link');
+    navPlan.style.display = 'inline';
+    navPlan.textContent = 'For ' + brand;
+
+    // Brand-specific Collaboration Concepts
+    var bc = BRAND_CONCEPTS[brand.toLowerCase()];
+    if (bc && bc.concepts && bc.concepts.length) {
+      document.getElementById('concepts-label').textContent = 'Concepts For ' + brand;
+      document.getElementById('concepts-heading').textContent = 'How I\'d approach this with ' + brand;
+      document.getElementById('concepts-sub').textContent = bc.intro || ('A few directions I\'d bring to a partnership with ' + brand + '.');
+      var grid = document.getElementById('concepts-grid');
+      grid.innerHTML = '';
+      bc.concepts.forEach(function(c, i){
+        var card = document.createElement('div');
+        card.className = 'concept-card';
+        var html = '';
+        if (c.img) { html += '<div class="concept-media" style="background-image:url(\'' + c.img + '\')"></div>'; }
+        html += '<div class="k">0' + (i + 1) + '</div>';
+        html += '<h4></h4><p></p>';
+        card.innerHTML = html;
+        card.querySelector('h4').textContent = c.title;
+        card.querySelector('p').textContent = c.text;
+        grid.appendChild(card);
+      });
+    }
 
     // Tailored plan section
     document.getElementById('tailored-plan').style.display = 'block';
