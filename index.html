@@ -77,40 +77,28 @@
   .nav-links a:hover{color:var(--ink);}
   @media(max-width:760px){ .nav-links a:not(.btn){display:none;} }
 
-  /* HERO: editorial split, cream text panel left, full-height video right, no text over the video */
-  .hero{display:flex; min-height:78vh;}
-  @media(max-width:860px){ .hero{flex-direction:column; min-height:auto;} }
-  .hero-left{
-    width:42%; background:var(--paper); color:var(--ink);
-    display:flex; flex-direction:column; justify-content:center;
-    padding:64px 56px;
-  }
-  @media(max-width:860px){ .hero-left{width:100%; order:2; padding:44px 22px 52px;} }
-  .hero-right{width:58%; position:relative; overflow:hidden;}
-  .hero-right video{width:100%; height:100%; object-fit:cover; object-position:center center; display:block;}
-  @media(max-width:860px){
-    .hero-right{width:100%; order:1; aspect-ratio:4/3;}
-  }
-  .hero-eye{font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-ink); margin-bottom:24px; display:block;}
-  .hero h1{font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(32px,3.4vw,50px); line-height:1.12; margin:0 0 20px; max-width:14ch; color:var(--ink);}
-  .hero h1 em{font-style:italic; color:var(--gold-ink);}
-  .hero p.lede{font-size:16px; color:var(--muted); max-width:38ch; margin:0 0 34px; line-height:1.62;}
+  /* HERO */
+  .hero{position:relative; min-height:74vh; overflow:hidden;}
+  .hero-media{position:absolute; inset:0;}
+  .hero-media video{width:100%; height:100%; object-fit:cover; object-position:center 22%;}
+  .hero-media::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(12,10,7,.88), rgba(12,10,7,.5) 60%, rgba(12,10,7,.6));}
+  .hero-c{position:relative; z-index:2; min-height:74vh; display:flex; flex-direction:column; justify-content:flex-end; padding:64px 0 56px; color:#fff;}
+  .hero-eye{font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:22px;}
+  .hero h1{font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(34px,5.2vw,64px); line-height:1.08; margin:0 0 20px; max-width:16ch; text-shadow:0 2px 14px rgba(0,0,0,.45);}
+  .hero h1 em{font-style:italic; color:var(--gold-warm);}
+  .hero p.lede{font-size:16.5px; color:rgba(255,255,255,.82); max-width:46ch; margin:0 0 30px; line-height:1.6;}
+  .hero-role{font-family:'Jost',sans-serif; font-size:13.5px; font-weight:500; letter-spacing:.03em; color:var(--gold-warm); max-width:44ch; margin:0 0 16px; line-height:1.5; text-shadow:0 1px 8px rgba(0,0,0,.5);}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 
   /* STATS */
   .stats-strip{background:var(--ink-2); color:var(--paper); padding:22px 0;}
-  .stats-grid{display:grid; grid-template-columns:repeat(3,1fr); max-width:720px; margin:0 auto; gap:20px; text-align:center;}
-  @media(max-width:560px){
-    .stats-grid{grid-template-columns:repeat(3,1fr); gap:8px;}
-    .stat-num{font-size:clamp(17px,5vw,22px);}
-    .stat-label{font-size:8.5px; letter-spacing:.08em;}
-  }
+  .stats-grid{display:grid; grid-template-columns:repeat(2,1fr); max-width:520px; margin:0 auto; gap:20px; text-align:center;}
   .stat-num{font-family:'Cormorant Garamond',serif; font-size:clamp(22px,2.6vw,30px); font-weight:500; color:var(--gold-warm); line-height:1;}
   .stat-label{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(247,244,238,.62); margin-top:4px;}
   .stats-attrib{text-align:center; font-size:11px; letter-spacing:.04em; color:rgba(247,244,238,.45); margin-top:14px;}
 
-  section{padding:78px 0;}
-  @media(max-width:720px){ section{padding:52px 0;} }
+  section{padding:100px 0;}
+  @media(max-width:720px){ section{padding:64px 0;} }
 
   /* ABOUT */
   .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:64px; align-items:start;}
@@ -122,13 +110,14 @@
   .pill{border:1px solid var(--line); padding:9px 16px; font-family:'Jost',sans-serif; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-ink); transition:border-color .2s,background .2s;}
   .pill:hover{border-color:var(--gold); background:var(--paper-2);}
 
-  /* PHILOSOPHY PULL-QUOTE (folded into the top of About, not its own section) */
-  .q-lead{max-width:20ch; margin:0 auto 52px; text-align:center; font-family:'Cormorant Garamond',serif; font-weight:400; font-style:italic; font-size:clamp(24px,3.6vw,36px); line-height:1.28; color:var(--ink);}
-  .q-lead em{font-style:italic; color:var(--gold-ink);}
+  /* PHILOSOPHY PULL-QUOTE (mirrors ayofashina.com's .philo/.q pattern) */
+  .philo{padding:70px 0;}
+  .philo .q{max-width:20ch; margin:0 auto; text-align:center; font-family:'Cormorant Garamond',serif; font-weight:400; font-style:italic; font-size:clamp(28px,4.6vw,44px); line-height:1.28; color:var(--ink);}
+  .philo .q em{font-style:italic; color:var(--gold-ink);}
 
   /* SERVICES (What Brands Hire Me For) */
-  .services-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
-  @media(max-width:900px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
+  .services-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:16px;}
+  @media(max-width:960px){ .services-grid{grid-template-columns:repeat(2,1fr);} }
   @media(max-width:600px){ .services-grid{grid-template-columns:1fr;} }
   .service-card{border:1px solid var(--line); background:var(--paper); padding:26px 22px; transition:border-color .3s,transform .3s;}
   .service-card:hover{border-color:var(--gold); transform:translateY(-3px);}
@@ -136,20 +125,29 @@
   .service-card h4{font-family:'Jost',sans-serif; font-weight:500; font-size:15px; margin:0 0 10px; color:var(--ink);}
   .service-card p{font-size:13.5px; color:var(--muted); line-height:1.55; margin:0;}
 
-  /* SELECTED WORK (was Content Showcase) */
-  .showcase-videos{display:flex; justify-content:center; align-items:start; gap:28px; flex-wrap:wrap; margin-bottom:56px;}
-  .video-pair-col{max-width:340px; width:100%; flex:1 1 300px; text-align:center;}
-  .video-pair-col h4{font-family:'Jost',sans-serif; font-weight:500; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-ink); margin:0 0 16px;}
-  .video-pair-thumb{aspect-ratio:9/16; width:100%; display:block; object-fit:cover; background:var(--paper-2);}
-  .placeholder-thumb{display:flex; align-items:center; justify-content:center; border:1px dashed var(--line); font-family:'Jost',sans-serif; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);}
-  .showcase-caption{margin:14px auto 0; font-size:13.5px; color:var(--muted); max-width:640px; text-align:center;}
-  .editorial-heading{text-align:center; margin-bottom:20px;}
-  .editorial-heading h4{font-family:'Jost',sans-serif; font-weight:500; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-ink); margin:0;}
-  .editorial-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:900px; margin:0 auto; width:100%;}
-  @media(max-width:760px){ .editorial-grid{grid-template-columns:repeat(2,1fr);} }
+  /* CONTENT SHOWCASE */
+  .showcase-grid{display:grid; grid-template-columns:0.52fr 1.48fr; gap:48px; align-items:start;}
+  @media(max-width:820px){ .showcase-grid{grid-template-columns:1fr;} }
+  .showcase-col h4{font-family:'Jost',sans-serif; font-weight:500; font-size:12.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-ink); margin:0 0 16px;}
+  .reel-thumb{aspect-ratio:9/16; max-width:320px; width:100%; display:block; object-fit:cover; background:var(--paper-2);}
+  .showcase-caption{margin-top:14px; font-size:13.5px; color:var(--muted); max-width:320px;}
+  .ln{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--gold-ink); border-bottom:1px solid var(--gold); padding-bottom:2px; transition:opacity .2s;}
+  .ln:hover{opacity:.65;}
+  .editorial-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:14px;}
   .editorial-tile{aspect-ratio:4/5;}
 
-  /* CONTENT THAT PERFORMS (was Case Studies) */
+  /* CASE STUDIES */
+  .case-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
+  @media(max-width:900px){ .case-grid{grid-template-columns:1fr; max-width:480px; margin:0 auto;} }
+  .case-card{border:1px solid var(--line); background:var(--paper);}
+  .case-media{aspect-ratio:4/5; background:var(--paper-2);}
+  .case-media.vertical-video{aspect-ratio:9/16;}
+  .case-media video{width:100%; height:100%; display:block; object-fit:cover;}
+  .case-body{padding:22px;}
+  .case-body .case-k{font-family:'Jost',sans-serif; font-weight:500; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold-ink); margin-bottom:8px;}
+  .case-body h4{font-family:'Cormorant Garamond',serif; font-weight:500; font-size:21px; margin:0 0 12px; color:var(--ink);}
+  .case-body p{font-size:13.5px; color:var(--muted); line-height:1.6; margin:0 0 10px;}
+  .case-body p:last-child{margin-bottom:0;}
   .case-body p strong{color:var(--ink); font-weight:600;}
 
   /* AUDIENCE */
@@ -193,8 +191,21 @@
   .testimonial{max-width:680px; margin:48px auto 0; text-align:center; font-family:'Cormorant Garamond',serif; font-size:22px; font-style:italic; color:var(--ink); line-height:1.4;}
   .testimonial span{display:block; margin-top:16px; font-family:'DM Sans',sans-serif; font-style:normal; font-size:11.5px; font-weight:600; color:var(--gold-ink); text-transform:uppercase; letter-spacing:.12em;}
 
-  /* PARTNERSHIPS STATEMENT (folded into Contact) */
-  .partnerships-statement{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--ink); max-width:52ch; margin:0 auto 30px; text-align:center;}
+  /* PACKAGES */
+  .packages-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  @media(max-width:900px){ .packages-grid{grid-template-columns:1fr;} }
+  .package-card{border:1px solid var(--line); background:var(--paper); padding:40px 32px; display:flex; flex-direction:column; transition:border-color .3s,transform .3s;}
+  .package-card:hover{border-color:var(--gold); transform:translateY(-3px);}
+  .package-card .k{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:15px; color:var(--gold-ink); text-transform:lowercase; margin-bottom:10px;}
+  .price{font-family:'Cormorant Garamond',serif; font-size:34px; font-weight:500; margin:0 0 4px; color:var(--ink);}
+  .price small{font-family:'DM Sans',sans-serif; font-size:12.5px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:.06em;}
+  .package-desc{font-size:13.5px; color:var(--muted); margin-bottom:22px; padding-bottom:22px; border-bottom:1px solid var(--line);}
+  .package-list{list-style:none; margin:0; padding:0; font-size:14px; flex:1;}
+  .package-list li{padding:8px 0; display:flex; gap:9px;}
+  .package-list li:before{content:"•"; color:var(--gold);}
+  .pricing-note{font-size:13px; color:var(--muted); margin:34px auto 0; max-width:70ch; text-align:center;}
+  .partnerships-statement{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:19px; color:var(--ink); max-width:52ch; margin:0 auto;}
+  .partnerships-formats{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:36px;}
 
   /* TAILORED PLAN */
   #tailored-plan{display:none; background:var(--paper-2);}
@@ -211,15 +222,7 @@
   .contact-band h2{font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(34px,6vw,64px); line-height:1.06; margin:0 auto 18px; max-width:16ch;}
   .contact-band h2 em{font-style:italic; color:var(--gold-warm);}
   .contact-band p{color:#B8AD99; max-width:46ch; margin:0 auto 34px; font-size:15.5px;}
-  .contact-band .partnerships-statement{color:var(--gold-warm); opacity:.92;}
   .contact-links{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
-  .icon-links{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:26px;}
-  .icon-link{
-    display:flex; align-items:center; justify-content:center; width:46px; height:46px; border-radius:50%;
-    border:1px solid rgba(255,255,255,.42); color:var(--paper); transition:background .25s,border-color .25s,color .25s;
-  }
-  .icon-link:hover{background:var(--paper); border-color:var(--paper); color:var(--ink-2);}
-  .icon-link svg{width:18px; height:18px; fill:none; stroke:currentColor; stroke-width:1.6;}
 
   footer{padding:60px 0 40px; background:var(--paper);}
   .f-top{display:flex; justify-content:space-between; gap:32px; flex-wrap:wrap; padding-bottom:34px; border-bottom:1px solid var(--line);}
@@ -239,11 +242,12 @@
     <a class="logo" href="#top">Ayo <i>Fashina</i></a>
     <div class="nav-links">
       <a href="#collabs">Brands</a>
-      <a href="#content-showcase">Work</a>
-      <a href="#case-studies">Results</a>
+      <a href="#content-showcase">Content</a>
+      <a href="#case-studies">Case Studies</a>
       <a href="#audience">Audience</a>
       <a href="#services">Services</a>
       <a href="#about">About</a>
+      <a href="rate-card.html">Rate Card</a>
       <a href="#plan" id="nav-plan-link" style="display:none;">Your Plan</a>
       <a class="btn solid" href="#contact">Let's Talk</a>
     </div>
@@ -251,30 +255,30 @@
 </div>
 
 <header class="hero" id="top">
-  <div class="hero-left">
-    <span class="hero-eye">Ayo Fashina &middot; Media Kit 2026</span>
-    <h1 id="hero-heading">I turn fashion into <em>stories</em> people remember.</h1>
-    <p class="lede" id="hero-lede">Fashion creator, stylist, and storyteller creating cinematic content with a clear point of view.</p>
-    <div class="hero-actions">
-      <a class="btn solid" href="#content-showcase">View Selected Work</a>
-      <a class="btn outline" href="#plan" id="hero-plan-btn" style="display:none;">See Your Tailored Plan</a>
-      <a class="btn outline" href="#contact" id="hero-contact-btn">Get In Touch</a>
-    </div>
-  </div>
-  <div class="hero-right">
+  <div class="hero-media">
     <video autoplay muted loop playsinline poster="media/hero-poster.jpg">
       <source src="media/hero-runway.mp4" type="video/mp4">
     </video>
+  </div>
+  <div class="hero-c wrap">
+    <span class="hero-eye">Media Kit &amp; Partnership Proposal</span>
+    <h1 id="hero-heading">I turn fashion into <em>stories</em> people remember.</h1>
+    <p class="hero-role">Fashion creator, stylist, and storyteller helping audiences dress better, shop smarter, and develop a point of view of their own.</p>
+    <p class="lede" id="hero-lede">Cinematic fashion storytelling, thoughtful styling, and an honest point of view, created to make people watch, think, and act.</p>
+    <div class="hero-actions">
+      <a class="btn solid" href="#content-showcase">View Selected Work</a>
+      <a class="btn ghost" href="#plan" id="hero-plan-btn" style="display:none;">See Your Tailored Plan</a>
+      <a class="btn ghost" href="#contact" id="hero-contact-btn">Get In Touch</a>
+    </div>
   </div>
 </header>
 
 <div class="stats-strip" id="stats">
   <div class="wrap stats-grid">
-    <div><div class="stat-num" data-target="36.4" data-suffix="K">0</div><div class="stat-label">Followers</div></div>
-    <div><div class="stat-num" data-target="87.9" data-suffix="%">0</div><div class="stat-label">Women</div></div>
-    <div><div class="stat-num" data-target="75.7" data-suffix="%">0</div><div class="stat-label">Aged 25&ndash;44</div></div>
+    <div><div class="stat-num">36.3K</div><div class="stat-label">Followers</div></div>
+    <div><div class="stat-num">10.4%</div><div class="stat-label">Avg. Engagement</div></div>
   </div>
-  <p class="stats-attrib">Source: Instagram Insights &middot; Updated July 2026</p>
+  <p class="stats-attrib">Source: Instagram Insights &mdash; average engagement based on trailing Reels. <!-- Ayo: confirm these numbers are current and update the date/window here before sending to brands. --></p>
 </div>
 
 <section id="collabs">
@@ -282,6 +286,7 @@
     <div class="section-head center">
       <div class="sec-lbl"><span class="lbl">Past Collaborations</span></div>
       <h2>Brands I've worked with</h2>
+      <p>A few of the partners I've created content and campaigns for.</p>
     </div>
     <div class="brand-grid">
       <div class="brand-tile">Alexis Bittar</div>
@@ -295,68 +300,85 @@
       <div class="brand-tile">DC Magazine / Modern Luxury</div>
       <div class="brand-tile">Waldorf Astoria</div>
     </div>
+    <p class="testimonial">"Ayo brings more than great style, she brings a clear point of view. She understood the brand, created content that felt polished without feeling overly produced, and made the partnership feel natural to her audience. She was also professional, communicative, and easy to work with from start to finish."<span>DC Magazine / Modern Luxury</span></p>
   </div>
 </section>
 
 <section id="content-showcase">
   <div class="wrap">
     <div class="section-head center">
-      <div class="sec-lbl"><span class="lbl">Portfolio</span></div>
-      <h2>Selected Work</h2>
-      <p>Work that shows how I approach fashion through story, styling, and place.</p>
+      <div class="sec-lbl"><span class="lbl">Content Showcase</span></div>
+      <h2>How I tell a story</h2>
+      <p>The range spans further than what's below: cinematic brand storytelling, styling and product integration, event and fashion week coverage, honest product reviews, and creative direction. Two real examples follow.</p>
+      <div class="pillars" style="justify-content:center; border-top:none; padding-top:0; margin-top:22px;">
+        <span class="pill">Cinematic Brand Storytelling</span>
+        <span class="pill">Styling &amp; Product Integration</span>
+        <span class="pill">Event &amp; Fashion Week Coverage</span>
+        <span class="pill">Honest Product Reviews</span>
+        <span class="pill">Creative Direction</span>
+      </div>
     </div>
-
-    <div class="showcase-videos">
-      <div class="video-pair-col">
-        <h4>Modern Luxury DC: Event Coverage</h4>
-        <video class="video-pair-thumb" controls playsinline preload="metadata" poster="media/event-recap-poster.jpg">
+    <div class="showcase-grid">
+      <div class="showcase-col">
+        <h4>Event Recap</h4>
+        <video class="reel-thumb" controls playsinline preload="metadata" poster="media/event-recap-poster.jpg">
           <source src="media/event-recap.mp4" type="video/mp4">
         </video>
+        <p class="showcase-caption">A recap from a recent Modern Luxury DC press event, plus behind-the-scenes styling and outfit changes.</p>
       </div>
-      <div class="video-pair-col">
-        <h4>DC Monuments: Cinematic Editorial</h4>
-        <video class="video-pair-thumb" controls playsinline preload="metadata" poster="media/dc-monument-poster.jpg">
-          <source src="media/dc-monument.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="video-pair-col">
-        <h4>Style Series: Cinematic Storytelling</h4>
-        <div class="video-pair-thumb placeholder-thumb">Coming Soon</div>
+      <div class="showcase-col">
+        <h4>Editorial Outfit Shots</h4>
+        <div class="editorial-grid">
+          <div class="editorial-tile" style="background:url('media/editorial-burgundy.png') center/cover;"></div>
+          <div class="editorial-tile" style="background:url('media/editorial-white-coat.png') center/cover;"></div>
+          <div class="editorial-tile" style="background:url('media/editorial-nyfw.png') center/cover;"></div>
+          <div class="editorial-tile" style="background:url('media/editorial-trench.png') center/cover;"></div>
+        </div>
+        <p class="showcase-caption">A mix of street style and red carpet looks from recent shoots and events.</p>
       </div>
     </div>
-
-    <div class="editorial-heading">
-      <h4>Styling &amp; Editorial</h4>
-    </div>
-    <div class="editorial-grid">
-      <div class="editorial-tile" style="background:url('media/editorial-burgundy.png') center/cover;"></div>
-      <div class="editorial-tile" style="background:url('media/editorial-white-coat.png') center/cover;"></div>
-      <div class="editorial-tile" style="background:url('media/editorial-nyfw.png') center/cover;"></div>
-      <div class="editorial-tile" style="background:url('media/editorial-trench.png') center/cover;"></div>
-    </div>
-    <p class="showcase-caption">Street style, event dressing, and location-based editorials demonstrating range across different settings and visual directions.</p>
   </div>
 </section>
 
 <section id="case-studies">
   <div class="wrap">
     <div class="section-head center">
-      <div class="sec-lbl"><span class="lbl">Performance</span></div>
-      <h2>Content That Performs</h2>
+      <div class="sec-lbl"><span class="lbl">Case Studies</span></div>
+      <h2>Selected work</h2>
     </div>
-    <div class="services-grid" style="grid-template-columns:repeat(2,1fr); max-width:820px; margin-left:auto; margin-right:auto;">
-      <div class="service-card">
-        <div class="k">Reel Performance</div>
-        <h4>&ldquo;Devil Wears Prada 2&rdquo; Reel</h4>
-        <p>19.8K likes &middot; 3.5K shares &middot; 916 reposts &middot; 2,000 new followers from a single post.</p>
+    <div class="case-grid">
+      <div class="case-card">
+        <div class="case-media" style="background:url('media/event-recap-poster.jpg') center/cover;"></div>
+        <div class="case-body">
+          <div class="case-k">Event Coverage</div>
+          <h4>Modern Luxury DC Press Event</h4>
+          <p><strong>Concept:</strong> Give the brand a real-time recap of the event, not just a photo dump after the fact.</p>
+          <p><strong>Delivered:</strong> On-site coverage from arrival through the night, edited into a single recap video with a styling breakdown (see the full video in Content Showcase above).</p>
+        </div>
       </div>
-      <div class="service-card">
-        <div class="k">Reel Performance</div>
-        <h4>&ldquo;A Month Of Getting Dressed&rdquo;</h4>
-        <p>3K likes &middot; 926 new follows. Top reels consistently drive 250&ndash;2,000 follows each.</p>
+      <div class="case-card">
+        <div class="case-media vertical-video">
+          <video autoplay muted loop playsinline preload="metadata" aria-label="DC Monuments cinematic editorial">
+            <source src="media/dc-monument.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="case-body">
+          <div class="case-k">Cinematic Editorial</div>
+          <h4>DC Monuments Shoot</h4>
+          <p><strong>Concept:</strong> Turn a single gown into a cinematic narrative against DC's architecture, instead of a straightforward product photo.</p>
+          <p><strong>Delivered:</strong> Full styling and photography direction across multiple looks and locations for one shoot.</p>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-media" style="background:url('media/editorial-trench.png') center/cover;"></div>
+        <div class="case-body">
+          <div class="case-k">Styling &amp; Product Integration</div>
+          <h4>Street Style, Real Wardrobe</h4>
+          <p><strong>Concept:</strong> Show how one piece, a bag or a coat, works inside a real, wearable outfit, not just on its own.</p>
+          <p><strong>Delivered:</strong> A full styled look built around the piece, shot on location.</p>
+        </div>
       </div>
     </div>
-    <p class="showcase-caption" style="margin-top:20px; max-width:60ch;">Most Reel views come from non-followers, meaning content reaches well beyond the existing audience. (Instagram Insights, trailing 180 days.)</p>
   </div>
 </section>
 
@@ -369,24 +391,25 @@
     </div>
     <div class="demo-grid">
       <div class="demo-card">
-        <h4>Core Age Range</h4>
-        <div class="bar-row"><span class="label">25&ndash;34</span><div class="bar-track"><div class="bar-fill" style="width:35.1%"></div></div><span class="val">35.1%</span></div>
-        <div class="bar-row"><span class="label">35&ndash;44</span><div class="bar-track"><div class="bar-fill" style="width:40.6%"></div></div><span class="val">40.6%</span></div>
-        <p class="showcase-caption" style="margin-top:10px; text-align:left;">75.7% of the audience falls between 25&ndash;44, the prime purchasing demo.</p>
+        <h4>Age Range</h4>
+        <div class="bar-row"><span class="label">18&ndash;24</span><div class="bar-track"><div class="bar-fill" style="width:28%"></div></div><span class="val">28%</span></div>
+        <div class="bar-row"><span class="label">25&ndash;34</span><div class="bar-track"><div class="bar-fill" style="width:46%"></div></div><span class="val">46%</span></div>
+        <div class="bar-row"><span class="label">35&ndash;44</span><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div><span class="val">18%</span></div>
+        <div class="bar-row"><span class="label">45+</span><div class="bar-track"><div class="bar-fill" style="width:8%"></div></div><span class="val">8%</span></div>
       </div>
       <div class="demo-card">
         <h4>Gender</h4>
-        <div class="bar-row"><span class="label">Women</span><div class="bar-track"><div class="bar-fill" style="width:87.9%"></div></div><span class="val">87.9%</span></div>
+        <div class="bar-row"><span class="label">Women</span><div class="bar-track"><div class="bar-fill" style="width:98%"></div></div><span class="val">98%</span></div>
+        <div class="bar-row"><span class="label">Men</span><div class="bar-track"><div class="bar-fill" style="width:2%"></div></div><span class="val">2%</span></div>
       </div>
       <div class="demo-card">
-        <h4>Global Reach</h4>
+        <h4>Top Locations</h4>
         <ul class="demo-list">
-          <li><span class="name">United States</span><span class="pct">36.4%</span></li>
-          <li><span class="name">Nigeria</span><span class="pct">12.6%</span></li>
-          <li><span class="name">Brazil</span><span class="pct">8.6%</span></li>
-          <li><span class="name">South Africa</span><span class="pct">4.2%</span></li>
-          <li><span class="name">United Kingdom</span><span class="pct">4.1%</span></li>
-          <li><span class="name">Other</span><span class="pct">34.1%</span></li>
+          <li><span class="name">New York, US</span><span class="pct">24%</span></li>
+          <li><span class="name">Atlanta, US</span><span class="pct">12%</span></li>
+          <li><span class="name">Los Angeles, US</span><span class="pct">9%</span></li>
+          <li><span class="name">Toronto, CA</span><span class="pct">6%</span></li>
+          <li><span class="name">Other</span><span class="pct">49%</span></li>
         </ul>
       </div>
     </div>
@@ -398,6 +421,7 @@
     <div class="section-head center">
       <div class="sec-lbl"><span class="lbl">What Brands Hire Me For</span></div>
       <h2>Ways to work together</h2>
+      <p>Not just posts and Stories, creative thinking applied to a product, collection, or event.</p>
     </div>
     <div class="services-grid">
       <div class="service-card">
@@ -407,8 +431,8 @@
       </div>
       <div class="service-card">
         <div class="k">02</div>
-        <h4>Sponsored &amp; Licensed Content</h4>
-        <p>Feed, Story, and Reel content built to fit a brand's real goals for the campaign, with usage rights licensed for paid or organic use.</p>
+        <h4>Sponsored Social Content</h4>
+        <p>Feed, Story, and Reel content built to fit a brand's real goals for the campaign, not a one-size-fits-all post.</p>
       </div>
       <div class="service-card">
         <div class="k">03</div>
@@ -430,30 +454,10 @@
         <h4>Hosting &amp; Speaking</h4>
         <p>Hosting events, panels, and brand activations, and speaking on style, storytelling, or building a creative career.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section id="about">
-  <div class="wrap">
-    <p class="q-lead">"We get so stuck on having it,<br>we forget about <em>wearing</em> it."</p>
-    <div class="about-grid">
-      <div class="about-portrait" style="background:url('media/about-portrait.jpeg') center 20%/cover;"></div>
-      <div class="about-text">
-        <div class="sec-lbl"><span class="lbl">About</span></div>
-        <h2>Fashion should feel like a conversation, not a private club.</h2>
-        <p>
-          I'm a Nigerian-American fashion creator, stylist, and storyteller working between the DMV and New York. I create cinematic fashion stories that help audiences dress better, shop smarter, and develop a point of view of their own.
-        </p>
-        <p>
-          I believe you can't buy an eye. You build one through everything you've lived, loved, questioned, and noticed. Curate, don't collect: style isn't defined by price, and high and low can exist in the same wardrobe.
-        </p>
-        <div class="pillars">
-          <span class="pill">Curate, Don't Collect</span>
-          <span class="pill">Style In The Moment</span>
-          <span class="pill">My Closet</span>
-          <span class="pill">Culture &amp; Story</span>
-        </div>
+      <div class="service-card">
+        <div class="k">07</div>
+        <h4>UGC &amp; Licensed Content</h4>
+        <p>Original content created for a brand's own channels, with usage rights licensed for paid or organic use.</p>
       </div>
     </div>
   </div>
@@ -486,6 +490,46 @@
   </div>
 </section>
 
+<section class="philo"><div class="wrap">
+  <p class="q">"We get so stuck on having it,<br>we forget about <em>wearing</em> it."</p>
+</div></section>
+
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-portrait" style="background:url('media/about-portrait.jpeg') center 20%/cover;"></div>
+    <div class="about-text">
+      <div class="sec-lbl"><span class="lbl">About</span></div>
+      <h2>Fashion should feel like a conversation, not a private club.</h2>
+      <p>
+        I'm a Nigerian-American fashion creator, stylist, and storyteller working between the DMV and New York. I create cinematic fashion stories that help audiences dress better, shop smarter, and develop a point of view of their own.
+      </p>
+      <p>
+        I believe you can't buy an eye &mdash; you build one through everything you've lived, loved, questioned, and noticed. Curate, don't collect: style isn't defined by price, and high and low can exist in the same wardrobe.
+      </p>
+      <div class="pillars">
+        <span class="pill">Curate, Don't Collect</span>
+        <span class="pill">Style In The Moment</span>
+        <span class="pill">My Closet</span>
+        <span class="pill">Culture &amp; Story</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="packages-section" id="packages">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="sec-lbl"><span class="lbl">Partnerships</span></div>
+      <h2>Let's build something together</h2>
+      <p class="partnerships-statement">Custom proposals are developed based on concept, deliverables, production, usage, exclusivity, and campaign timeline.</p>
+      <div class="partnerships-formats">
+        <a class="btn outline" href="rate-card.html">View Rate Card</a>
+      </div>
+    </div>
+    <p class="pricing-note">If you've sent me a tailored proposal link, your specific plan is below.</p>
+  </div>
+</section>
+
 <section id="tailored-plan">
   <div class="wrap">
     <div class="plan-card">
@@ -509,20 +553,10 @@
     <span class="e">get in touch</span>
     <h2 id="contact-heading">Let's create something <em>great</em> together</h2>
     <p id="contact-sub">Planning a campaign, launch, event, or fashion story? Let's build the concept together.</p>
-    <p class="partnerships-statement">Custom proposals are developed based on concept, deliverables, production, usage, exclusivity, and campaign timeline.</p>
     <div class="contact-links">
       <a class="btn gold" href="mailto:info@ayofashina.com?subject=Let%27s%20collaborate">Email Me</a>
-    </div>
-    <div class="icon-links">
-      <a class="icon-link" href="https://ayofashina.com" target="_blank" rel="noopener" aria-label="Website" title="ayofashina.com">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></svg>
-      </a>
-      <a class="icon-link" href="https://instagram.com/ayofashina" target="_blank" rel="noopener" aria-label="Instagram" title="@ayofashina">
-        <svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
-      <a class="icon-link" href="mailto:info@ayofashina.com?subject=Let%27s%20collaborate" aria-label="Email" title="info@ayofashina.com">
-        <svg viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 6.5l8.5 7 8.5-7"/></svg>
-      </a>
+      <a class="btn ghost" href="https://ayofashina.com" target="_blank" rel="noopener">ayofashina.com</a>
+      <a class="btn ghost" href="https://instagram.com/ayofashina" target="_blank" rel="noopener">@ayofashina on Instagram</a>
     </div>
   </div>
 </section>
@@ -580,44 +614,6 @@
 
     document.title = 'A Proposal for ' + brand + ' | Ayo Fashina';
   }
-})();
-
-// Stats count-up on scroll (Style D)
-(function(){
-  var nums = document.querySelectorAll('.stat-num[data-target]');
-  if (!nums.length) return;
-
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduceMotion) {
-    nums.forEach(function(el){
-      var target = parseFloat(el.getAttribute('data-target'));
-      var suffix = el.getAttribute('data-suffix') || '';
-      el.textContent = target.toFixed(1) + suffix;
-    });
-    return;
-  }
-
-  var observer = new IntersectionObserver(function(entries){
-    entries.forEach(function(entry){
-      if (!entry.isIntersecting) return;
-      var el = entry.target;
-      var target = parseFloat(el.getAttribute('data-target'));
-      var suffix = el.getAttribute('data-suffix') || '';
-      var duration = 1400;
-      var start = null;
-      function step(ts){
-        if (!start) start = ts;
-        var progress = Math.min((ts - start) / duration, 1);
-        var eased = 1 - Math.pow(1 - progress, 3);
-        el.textContent = (target * eased).toFixed(1) + suffix;
-        if (progress < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      observer.unobserve(el);
-    });
-  }, {threshold:0.6});
-
-  nums.forEach(function(el){ observer.observe(el); });
 })();
 </script>
 
