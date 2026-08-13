@@ -77,17 +77,25 @@
   .nav-links a:hover{color:var(--ink);}
   @media(max-width:760px){ .nav-links a:not(.btn){display:none;} }
 
-  /* HERO */
-  .hero{position:relative; min-height:74vh; overflow:hidden;}
-  .hero-media{position:absolute; inset:0;}
-  .hero-media video{width:100%; height:100%; object-fit:cover; object-position:center 22%;}
-  .hero-media::after{content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(12,10,7,.88), rgba(12,10,7,.5) 60%, rgba(12,10,7,.6));}
-  .hero-c{position:relative; z-index:2; min-height:74vh; display:flex; flex-direction:column; justify-content:flex-end; padding:64px 0 56px; color:#fff;}
-  .hero-eye{font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:rgba(255,255,255,.85); margin-bottom:22px;}
-  .hero h1{font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(34px,5.2vw,64px); line-height:1.08; margin:0 0 20px; max-width:16ch; text-shadow:0 2px 14px rgba(0,0,0,.45);}
-  .hero h1 em{font-style:italic; color:var(--gold-warm);}
-  .hero p.lede{font-size:16.5px; color:rgba(255,255,255,.82); max-width:46ch; margin:0 0 30px; line-height:1.6;}
-  .hero-role{font-family:'Jost',sans-serif; font-size:13.5px; font-weight:500; letter-spacing:.03em; color:var(--gold-warm); max-width:44ch; margin:0 0 16px; line-height:1.5; text-shadow:0 1px 8px rgba(0,0,0,.5);}
+  /* HERO: editorial split, cream text panel left, full-height video right, no text over the video */
+  .hero{display:flex; min-height:78vh;}
+  @media(max-width:860px){ .hero{flex-direction:column; min-height:auto;} }
+  .hero-left{
+    width:42%; background:var(--paper); color:var(--ink);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:64px 56px;
+  }
+  @media(max-width:860px){ .hero-left{width:100%; order:2; padding:44px 22px 52px;} }
+  .hero-right{width:58%; position:relative; overflow:hidden;}
+  .hero-right video{width:100%; height:100%; object-fit:cover; object-position:center center; display:block;}
+  @media(max-width:860px){
+    .hero-right{width:100%; order:1; aspect-ratio:4/3;}
+  }
+  .hero-eye{font-size:11px; letter-spacing:.3em; text-transform:uppercase; color:var(--gold-ink); margin-bottom:24px; display:block;}
+  .hero h1{font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(32px,3.4vw,50px); line-height:1.12; margin:0 0 20px; max-width:14ch; color:var(--ink);}
+  .hero h1 em{font-style:italic; color:var(--gold-ink);}
+  .hero p.lede{font-size:16px; color:var(--muted); max-width:38ch; margin:0 0 20px; line-height:1.62;}
+  .hero-role{font-family:'Jost',sans-serif; font-size:13.5px; font-weight:500; letter-spacing:.03em; color:var(--gold-ink); max-width:38ch; margin:0 0 16px; line-height:1.5;}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 
   /* STATS */
@@ -255,21 +263,21 @@
 </div>
 
 <header class="hero" id="top">
-  <div class="hero-media">
-    <video autoplay muted loop playsinline poster="media/hero-poster.jpg">
-      <source src="media/hero-runway.mp4" type="video/mp4">
-    </video>
-  </div>
-  <div class="hero-c wrap">
+  <div class="hero-left">
     <span class="hero-eye">Media Kit &amp; Partnership Proposal</span>
     <h1 id="hero-heading">I turn fashion into <em>stories</em> people remember.</h1>
     <p class="hero-role">Fashion creator, stylist, and storyteller helping audiences dress better, shop smarter, and develop a point of view of their own.</p>
     <p class="lede" id="hero-lede">Cinematic fashion storytelling, thoughtful styling, and an honest point of view, created to make people watch, think, and act.</p>
     <div class="hero-actions">
       <a class="btn solid" href="#content-showcase">View Selected Work</a>
-      <a class="btn ghost" href="#plan" id="hero-plan-btn" style="display:none;">See Your Tailored Plan</a>
-      <a class="btn ghost" href="#contact" id="hero-contact-btn">Get In Touch</a>
+      <a class="btn outline" href="#plan" id="hero-plan-btn" style="display:none;">See Your Tailored Plan</a>
+      <a class="btn outline" href="#contact" id="hero-contact-btn">Get In Touch</a>
     </div>
+  </div>
+  <div class="hero-right">
+    <video autoplay muted loop playsinline>
+      <source src="media/hero-runway.mp4" type="video/mp4">
+    </video>
   </div>
 </header>
 
