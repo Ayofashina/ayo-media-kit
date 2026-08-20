@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayo Fashina | Media Kit &amp; Partnership Proposal</title>
+<title>Ayo Fashina | Media Kit</title>
 <meta name="description" content="Media kit and partnership proposal for Ayo Fashina, fashion creator, stylist, and storyteller.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -84,12 +84,10 @@
   .hero-location{font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:var(--muted); margin:0 0 34px; padding-top:18px; border-top:1px solid var(--line); max-width:38ch;}
   .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
 
-  /* METRICS */
-  .stats-strip{background:var(--ink-2); color:var(--paper); padding:56px 0;}
-  .stats-grid{display:grid; grid-template-columns:repeat(2,1fr); max-width:520px; margin:0 auto; gap:20px; text-align:center;}
-  .stat-num{font-family:'Cormorant Garamond',serif; font-size:clamp(30px,3.6vw,42px); font-weight:400; color:var(--paper); line-height:1;}
-  .stat-label{font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:rgba(247,244,238,.55); margin-top:8px;}
-  .stats-attrib{text-align:center; font-size:11px; letter-spacing:.06em; color:rgba(247,244,238,.4); margin-top:26px;}
+  /* PROOF LINE */
+  .proof-line{background:var(--ink-2); padding:30px 0; text-align:center;}
+  .proof-text{margin:0; font-family:'Jost',sans-serif; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:rgba(247,244,238,.7);}
+  .proof-text strong{color:var(--paper); font-weight:500;}
 
   section{padding:104px 0;}
   @media(max-width:720px){ section{padding:64px 0;} }
@@ -101,8 +99,9 @@
   @media(max-width:860px){ .work-feature, .work-feature.reverse{flex-direction:column; gap:32px; margin-bottom:64px;} }
   .work-media{flex:0 0 auto; width:100%; max-width:440px;}
   .work-media video, .work-media .work-still{width:100%; aspect-ratio:9/16; object-fit:cover; display:block; background:var(--paper-2);}
+  @media(max-width:1080px) and (min-width:861px){ .work-feature, .work-feature.reverse{gap:40px;} .work-media{max-width:360px;} }
   @media(max-width:860px){ .work-media{max-width:340px; margin:0 auto;} }
-  .work-copy{flex:1; min-width:0;}
+  .work-copy{flex:1; min-width:240px;}
   .work-num{font-family:'Jost',sans-serif; font-weight:500; font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted); margin-bottom:14px; display:block;}
   .work-copy h3, .work-grid-feature h3{font-family:'Cormorant Garamond',serif; font-weight:500; font-size:clamp(24px,2.8vw,32px); margin:0 0 8px; color:var(--ink);}
   .work-copy .work-kicker, .work-grid-feature .work-kicker{font-family:'Jost',sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin:0 0 18px;}
@@ -241,9 +240,13 @@
   </div>
 </header>
 
-<div class="stats-strip" id="metrics">
-  <div class="wrap stats-grid">
-    <div><div class="stat-num">36.3K</div><div class="stat-label">Instagram Community</div></div>
+<div class="proof-line" id="metrics">
+  <div class="wrap">
+    <p class="proof-text"><strong>36.3K</strong> community &middot; <strong>10.4%</strong> avg. engagement &middot; <strong>98%</strong> women</p>
+    <!-- FUTURE VERIFIED METRIC SLOT -->
+  </div>
+</div>
+
 <section id="collaborations">
   <div class="wrap">
     <div class="section-head center">
@@ -264,25 +267,6 @@
     </div>
   </div>
 </section>
-
-<section id="about">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="sec-lbl"><span class="lbl">About</span></div>
-      <h2>Fashion should feel like a conversation, not a private club.</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-portrait" style="background:url('media/about-portrait.jpeg') center 20%/cover;" role="img" aria-label="Portrait of Ayo Fashina"></div>
-      <div class="about-text">
-        <p>I'm a Nigerian-American fashion creator, stylist, and storyteller working between the DMV and New York. My work is rooted in the belief that you can't buy an eye &mdash; you build one through culture, experience, curiosity, and attention. I create fashion stories that help people dress with more intention, shop with more discernment, and develop a point of view of their own.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="philo"><div class="wrap">
-  <p class="q">&ldquo;You can't buy an eye. <em>You build one.</em>&rdquo;</p>
-</div></section>
 
 <section id="selected-work">
   <div class="wrap">
@@ -335,10 +319,29 @@
 </section>
 <!-- FUTURE FEATURE: Add Style In The Moment series here after public launch on September 1 -->
 
+<section id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="sec-lbl"><span class="lbl">About</span></div>
+      <h2>Fashion should feel like a conversation, not a private club.</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-portrait" style="background:url('media/about-portrait.jpeg') center 20%/cover;" role="img" aria-label="Portrait of Ayo Fashina"></div>
+      <div class="about-text">
+        <p>I'm a Nigerian-American fashion creator, stylist, and storyteller working between the DMV and New York. My work is rooted in the belief that you can't buy an eye &mdash; you build one through culture, experience, curiosity, and attention. I create fashion stories that help people dress with more intention, shop with more discernment, and develop a point of view of their own.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="philo"><div class="wrap">
+  <p class="q">&ldquo;You can't buy an eye. <em>You build one.</em>&rdquo;</p>
+</div></section>
+
 <section id="case-studies">
   <div class="wrap">
     <div class="section-head center">
-      <div class="sec-lbl"><span class="lbl">Case Studies</span></div>
+      <div class="sec-lbl"><span class="lbl">Inside the Work</span></div>
       <h2>How the work comes together</h2>
     </div>
     <div class="case-grid">
@@ -466,12 +469,6 @@
     </div>
   </div>
 </section>
-
-    <div><div class="stat-num">10.4%</div><div class="stat-label">Avg. Engagement</div></div>
-    <!-- FUTURE VERIFIED METRIC SLOT -->
-  </div>
-  <p class="stats-attrib">Instagram Insights &middot; Updated August 2026</p>
-</div>
 
 <footer>
   <div class="wrap">
